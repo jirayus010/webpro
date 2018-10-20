@@ -4,6 +4,7 @@ var pgp = require('pg-promise')();
 var db = pgp('postgres://asbyzajzahyvzq:dd76877a7bfb807b339e11706d3a830ab7a83905f7f24443b1013dc4f2f8e089@ec2-107-20-249-48.compute-1.amazonaws.com:5432/dcttm3rv7gk25q?ssl=true');
 var app = express();
 var bodyParser = require('body-parser');
+var moment = require('moment');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -44,11 +45,12 @@ app.get('/products', function (req,res) {
 });
 app.get('/products/:pid', function (req, res) {
     var pid = req.params.pid;
+    var time = moment().format('MMMM Do YYYYY, h:mm:ss a');
     var sql = "select * from products where id=" + pid;
     db.any(sql)
         .then(function (data) {
 
-            res.render('pages/product_edit', { product: data[0] });
+            res.render('pages/product_edit', { product: data[0], time : time });
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
@@ -181,7 +183,7 @@ app.get('/products_delete/:id', function (req, res) {
         })
 
 });
-app.get('/newproducts', function (req, res) {
+app.get('/newproduct', function (req, res) {
     res.render('pages/addnewproduct');
 })
 app.post('/addnewproduct', function (req, res) {
@@ -201,7 +203,7 @@ app.post('/addnewproduct', function (req, res) {
     })
 });
 
-app.get('/newusers', function (req, res) {
+app.get('/newuser', function (req, res) {
     res.render('pages/addnewuser');
 })
 app.post('/addnewuser', function (req, res) {
