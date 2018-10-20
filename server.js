@@ -136,14 +136,17 @@ app.post('/product/update', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql = `update products set title= ${title}, price = ${price} where id=${id}`;
+    var sql = `update products set title= '${title}', price = '${price}' where id='${id}'`;
     //การใช้db.none
-
-    console.log('UPDATE:' +sql);
-    res.redirect('/products');
+db.any(sql)
+    .then(function(data){
+        console.log('UPDATE:' +sql);
+    res.redirect('/products')    
+})
+    .catch(function(error){
+        console.log('ERROR:' +error);
+    })
 });
-
-
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
 console.log('App is running on http://localhost:' + port);
