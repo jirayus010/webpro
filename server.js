@@ -55,55 +55,10 @@ app.get('/products/:pid', function (req, res) {
         .catch(function (error) {
             console.log('ERROR:' + error);
         })
-    // res.render('pages/product_edit');
-});
-app.get('/products/:ptitle', function (req, res) {
-    var pid = req.params.ptitle;
-    var sql = "select * from products where title=" + ptitle;
-    db.any(sql)
-        .then(function (data) {
-
-            res.render('pages/product_edit', { product: data[0] });
-        })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
-        })
-    // res.render('pages/product_edit');
-});
-
-app.get('/products/:pprice', function (req, res) {
-    var pid = req.params.pprice;
-    var sql = "select * from products where price=" + pprice;
-    db.any(sql)
-        .then(function (data) {
-
-            res.render('pages/product_edit', { product: data[0] });
-        })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
-        })
-    // res.render('pages/product_edit');
+    
 });
 
 
-
-//     app.get('/products/:id', function(req, res) {
-//         var id = req.param('id');
-//         var sql = 'select * from products';
-//         if(id){
-//             sql +=' where id =' +id;
-
-//         }
-//         db.any(sql)
-//             .then(function(data){
-//                 console.log('DATA:'+data);
-//                 res.render('pages/products',{products : data});
-//             })
-//             .catch(function(error){
-//                 console.log('ERROR:'+error);
-//             })
-
-// });
 app.get('/users/', function (req, res) {
     var sql = 'select * from users';
     db.any(sql+' order by id ASC')
