@@ -147,6 +147,80 @@ db.any(sql)
         console.log('ERROR:' +error);
     })
 });
+app.get('/users_delete/:id', function (req, res) {
+    var id = req.param('id');
+    var sql = 'DELETE * from users';
+    if (id) {
+        sql += ' where id =' + id;
+
+    }
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.render('pages/users', { users: data });
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+});
+app.get('/products_delete/:id', function (req, res) {
+    var id = req.param('id');
+    var sql = 'DELETE * from users';
+    if (id) {
+        sql += ' where id =' + id;
+
+    }
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.render('pages/products', { products: data });
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+});
+app.get('/newproducts', function (req, res) {
+    res.render('pages/addnewproduct');
+})
+app.post('/addnewproduct', function (req, res) {
+    var id = req.body.id;
+    var title = req.body.title;
+    var price = req.body.price;
+    var sql = `INSERT INTO products (id, title, price)
+    VALUES('${id}', '${title}', '${price}')`;  
+    console.log('UPDATE:' +sql);
+    db.any(sql)
+    .then(function(data){
+        console.log('DATA:' +sql);
+    res.redirect('/products')    
+})
+    .catch(function(error){
+        console.log('ERROR:' +error);
+    })
+});
+
+app.get('/newusers', function (req, res) {
+    res.render('pages/addnewuser');
+})
+app.post('/addnewuser', function (req, res) {
+    var id = req.body.id;
+    var email = req.body.email;
+    var password = req.body.password;
+    var sql = `INSERT INTO users (id, email, password)
+    VALUES('${id}', '${email}', '${password}')`;  
+    console.log('UPDATE:' +sql);
+    db.any(sql)
+    .then(function(data){
+        console.log('DATA:' +sql);
+    res.redirect('/users')    
+})
+    .catch(function(error){
+        console.log('ERROR:' +error);
+    })
+});
+
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
 console.log('App is running on http://localhost:' + port);
