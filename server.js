@@ -1,7 +1,7 @@
 var express = require('express');
 var pgp = require('pg-promise')();
 //var db = pgp(process.env.DATABASE_URL);
-var db = pgp('postgres://asbyzajzahyvzq:dd76877a7bfb807b339e11706d3a830ab7a83905f7f24443b1013dc4f2f8e089@ec2-107-20-249-48.compute-1.amazonaws.com:5432/dcttm3rv7gk25q=true');
+var db = pgp('postgres://ocasrvwodfnotv:822a3ea7e2325b9bb680d02bf252ddd82e833cbd240652178e224b8f7e382740@ec2-23-21-171-249.compute-1.amazonaws.com:5432/d52iomj5sftpj3?ssl=true');
 var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -34,7 +34,7 @@ app.get('/products', function (req,res) {
     }
     db.any(sql)
         .then(function (data) {
-            console.log('DATA:' + data);
+            console.log('DATA:' +data);
             res.render('pages/products', { products: data });
         })
         .catch(function (error) {
