@@ -143,17 +143,52 @@ app.post('/product/update', function (req, res) {
     res.redirect('/products');
 });
 
-app.post('/newproduct', function (req, res) {
+app.get('/newproduct', function (req, res) {
+    res.render('pages/addnewproduct');
+})
+app.post('/addnewproduct', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql = `update products set title= ${title}, price = ${price} where id=${id}`;
-    //การใช้db.none
+    var sql = `INSERT INTO products (id, title, price)
+    VALUES ('${id}', '${title}', '${price}')`;
+    //db.none
+    console.log('UPDATE:' + sql);
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/products')
 
-    console.log('UPDATE:' +sql);
-    res.redirect('/products');
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+})
+//addnewuser
+app.get('/newuser', function (req, res) {
+    res.render('pages/addnewuser');
+})
+
+app.post('/addnewuser', function (req, res) {
+    var id = req.body.id;
+    var email = req.body.email;
+    var password = req.body.password;
+    var sql = `INSERT INTO users (id, email, password)
+    VALUES ('${id}', '${email}', '${password}')`;
+    //db.none
+    console.log('UPDATE:' + sql);
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/users')
+        })
+
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
 });
-
+//datetime
 
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
