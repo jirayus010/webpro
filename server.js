@@ -32,7 +32,7 @@ app.get('/products', function (req,res) {
         sql += ' where id =' + id;
 
     }
-    db.any(sql+'order by id ASC')
+    db.any(sql+' order by id ASC')
         .then(function (data) {
             console.log('DATA:' +data);
             res.render('pages/products', { products: data });
@@ -104,7 +104,7 @@ app.get('/products/:pprice', function (req, res) {
 // });
 app.get('/users/', function (req, res) {
     var sql = 'select * from users';
-    db.any(sql)
+    db.any(sql+' order by id ASC')
         .then(function (data) {
             console.log('DATA:' + data);
             res.render('pages/users', { users: data });
