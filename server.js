@@ -32,7 +32,7 @@ app.get('/products', function (req,res) {
         sql += ' where id =' + id;
 
     }
-    db.any(sql)
+    db.any(sql+'order by id ASC')
         .then(function (data) {
             console.log('DATA:' +data);
             res.render('pages/products', { products: data });
