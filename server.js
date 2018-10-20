@@ -143,17 +143,6 @@ app.post('/product/update', function (req, res) {
     res.redirect('/products');
 });
 
-app.post('/newproduct', function (req, res) {
-    var id = req.body.id;
-    var title = req.body.title;
-    var price = req.body.price;
-    var sql = `update products set title= ${title}, price = ${price} where id=${id}`;
-    //การใช้db.none
-
-    console.log('UPDATE:' +sql);
-    res.redirect('/products');
-});
-
 
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
