@@ -1,12 +1,13 @@
 <% include ../partials/header %>
+
 <h1><%= fullname %></h1>
-<h2>Nack</h2>
-<h2>Age : 20</h2>
-<h2>Birthday : <%= bd %></h2>
-<h2>My Hobbies</h2>
+
 <ul>
-    <% hobbies.forEach(function(hobbies) { %>
-        <li><%= hobbies %> </li>
+    <% hobbies.forEach(function(hobby) { %>
+        <li><%= hobby %></li>
     <% }); %>
 </ul>
+
+
+
 <% include ../partials/footer %>

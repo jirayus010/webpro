@@ -1,6 +1,7 @@
 var express = require('express');
 var pgp = require('pg-promise')();
-var db = pgp('postgres://nkwnjxuiidwrns:b72b4de42f726173c9acee8a85dd10ed1c8dc1a2ab7402a6feebbbccb8b14f85@ec2-54-163-245-44.compute-1.amazonaws.com:5432/d34ii1v5fr4h1e?ssl=true');
+//var db = pgp(process.env.DATABASE_URL);
+var db = pgp('postgres://asbyzajzahyvzq:dd76877a7bfb807b339e11706d3a830ab7a83905f7f24443b1013dc4f2f8e089@ec2-107-20-249-48.compute-1.amazonaws.com:5432/dcttm3rv7gk25q=true');
 var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -141,6 +142,19 @@ app.post('/product/update', function (req, res) {
     console.log('UPDATE:' +sql);
     res.redirect('/products');
 });
+
+app.post('/newproduct', function (req, res) {
+    var id = req.body.id;
+    var title = req.body.title;
+    var price = req.body.price;
+    var sql = `update products set title= ${title}, price = ${price} where id=${id}`;
+    //การใช้db.none
+
+    console.log('UPDATE:' +sql);
+    res.redirect('/products');
+});
+
+
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
 console.log('App is running on http://localhost:' + port);
