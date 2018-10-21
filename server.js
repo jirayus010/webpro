@@ -73,6 +73,7 @@ app.get('/users/', function (req, res) {
 });
 app.get('/users/:id', function (req, res) {
     var id = req.param('id');
+    var time = moment().format('MMMM Do YYYYY, h:mm:ss a');
     var sql = 'select * from users';
     if (id) {
         sql += ' where id =' + id;
@@ -81,7 +82,7 @@ app.get('/users/:id', function (req, res) {
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
-            res.render('pages/users', { users: data });
+            res.render('pages/user_edit', { users: data, time : time });
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
@@ -104,9 +105,41 @@ db.any(sql)
         console.log('ERROR:' +error);
     })
 });
+
+app.get('/users/:uid', function (req, res) {
+    var uid = req.params.uid;
+    var time=moment().format('MMMM Do YYYY, h:mm:ss a');
+    var sql = "select * from users where id=" + uid;
+    db.any(sql)
+        .then(function (data) {
+
+            res.render('pages/user_edit', { user: data[0], time : time });
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+    
+});
+app.post('/user/update', function (req, res) {
+    var id = req.body.id;
+    var email = req.body.email;
+    var password = req.body.password;
+    var sql = `update users set email= '${email}', password = '${password}' where id='${id}'`;
+    //การใช้db.none
+     db.none(sql);
+db.any(sql)
+    .then(function(data){
+        console.log('DATA:' +sql);
+    res.redirect('/users')    
+})
+    .catch(function(error){
+        console.log('ERROR:' +error);
+    })
+});
+
 app.get('/users_delete/:id', function (req, res) {
     var id = req.param('id');
-    var sql = 'DELETE * from users';
+    var sql = 'DELETE FROM users';
     if (id) {
         sql += ' where id =' + id;
 
@@ -119,11 +152,12 @@ app.get('/users_delete/:id', function (req, res) {
         .catch(function (error) {
             console.log('ERROR:' + error);
         })
+        
 
 });
 app.get('/products_delete/:id', function (req, res) {
-    var id = req.param('id');
-    var sql = 'DELETE * from users';
+    var id = req.params.id;
+    var sql = 'DELETE FROM products';
     if (id) {
         sql += ' where id =' + id;
 
@@ -131,7 +165,7 @@ app.get('/products_delete/:id', function (req, res) {
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
-            res.render('pages/products', { products: data });
+            res.redirect('/products');
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
