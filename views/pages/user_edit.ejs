@@ -7,19 +7,19 @@
 <div class="form-group">
   <label for="">ID</label>
   <input type="number"
-    class="form-control" value="<%= users.id %>" name="id" id="" aria-describedby="helpId" placeholder="">
+    class="form-control" value="<%= user.id %>" name="id" id="" aria-describedby="helpId" placeholder="">
   <small id="helpId" class="form-text text-muted">User ID</small>
 </div>
 <div class="form-group">
   <label for="">Email</label>
   <input type="text"
-    class="form-control" value="<%= users.email %>" name="email" id="" aria-describedby="helpId" placeholder="">
+    class="form-control" value="<%= user.email %>" name="email" id="" aria-describedby="helpId" placeholder="">
   <small id="helpId" class="form-text text-muted">User Email</small>
 </div>
 <div class="form-group">
   <label for="">Password</label>
-  <input type="number"
-    class="form-control" value="<%= users.password %>" name="password" id="" aria-describedby="helpId" placeholder="">
+  <input type="text"
+    class="form-control" value="<%= user.password %>" name="password" id="" aria-describedby="helpId" placeholder="">
   <small id="helpId" class="form-text text-muted">User Password</small>
 </div>
 
@@ -35,7 +35,7 @@
 
 <a name="" id="" class="btn btn-secondary" href="/users" role="button">CANCLE</a>
 <button type="submit" class="btn btn-success">SAVE</button>
-<a name="btnConfirm" value="confirm"  OnClick="return confirm('Do you want to Delete?')" class="btn btn-danger" href="/users_delete/<%= users.id %>" role="button">DELETE</a>
+<a name="btnConfirm" value="confirm"  OnClick="return confirm('Do you want to Delete?')" class="btn btn-danger" href="/users_delete/<%= user.id %>" role="button">DELETE</a>
 
 </div>
 </form>
