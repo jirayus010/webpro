@@ -15,6 +15,7 @@
     "date-and-time": "^0.6.2",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
+    "graph-node-js": "0.0.1",
     "js-datepicker": "^3.3.3",
     "moment": "^2.22.2",
     "node-calendar": "^0.1.5",
