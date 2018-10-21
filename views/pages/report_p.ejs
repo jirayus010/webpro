@@ -1,0 +1,24 @@
+
+<% include ../partials/header%>
+
+<table class="table">
+    <h1><center>Top 10 Products</center></h1><br>
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Title</th>
+            <th>Price</th>            
+        </tr>
+    </thead>
+    <tbody id="myTable">
+    <% products.forEach(function(products){ %>
+        <tr>
+            
+            <td scope="row"><%= products.id %></td>
+            <td><%= products.title %></td>
+            <td><%= products.price %></td>
+            
+        </tr>
+    <%}); %>
+    </tbody>
+</table>

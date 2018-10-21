@@ -5,6 +5,7 @@ var db = pgp('postgres://asbyzajzahyvzq:dd76877a7bfb807b339e11706d3a830ab7a83905
 var app = express();
 var bodyParser = require('body-parser');
 var moment = require('moment');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -204,17 +205,14 @@ app.post('/addnewuser', function (req, res) {
     })
 });
 
-app.get('/report_product', function (req,res) {
-    var id = req.param('id');
-    var sql = 'select * from products';
-    if (id) {
-        sql += ' where id =' + id;
-
-    }
-    db.any(sql+' order by id DSC')
+app.get('/report_p', function (req,res) {
+ 
+    var sql = 'select * from products order by price DESC limit 10';
+    
+    db.any(sql)
         .then(function (data) {
             console.log('DATA:' +data);
-            res.render('/report-product', { products: data });
+            res.render('pages/report_p', { products: data });
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
