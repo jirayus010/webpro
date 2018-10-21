@@ -1,0 +1,30 @@
+
+<% include ../partials/header%>
+
+<table class="table">
+    <h1><center>Top 10 Expensive Products</center></h1><br>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Total Sales</th>
+                       
+        </tr>
+    </thead>
+    <tbody id="myTable">
+    <% users.forEach(function(users){ %>
+        <tr>
+            <td scope="row"><%= users.name %></td>           
+            <td><%= users.email %></td>
+            <td><%= users.title %></td>
+            <td><%= users.quantity %></td>
+            <td>$<%= users.total %></td>
+            
+        </tr>
+    <%}); %>
+    
+    </tbody>
+</table>
+

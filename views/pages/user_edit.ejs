@@ -7,7 +7,7 @@
 <div class="form-group">
   <label for="">ID</label>
   <input type="number"
-    class="form-control" value="<%= user.id %>" name="id" id="" aria-describedby="helpId" placeholder="">
+    class="form-control" value="<%= user.user_id %>" name="user_id" id="" aria-describedby="helpId" placeholder="">
   <small id="helpId" class="form-text text-muted">User ID</small>
 </div>
 <div class="form-group">
@@ -25,9 +25,11 @@
 
 <div class="form-group">
   <label for="">Time</label>
-  <input type="number"
-    class="form-control" value="<%= time %>" name="time" id="" aria-describedby="helpId" placeholder="" disable>
-  <small id="helpId" class="form-text text-muted">Time</small>
+  <input type="text"
+    class="form-control" value="<%= time %>" name="time" id="input" aria-describedby="helpId" placeholder="" disable>
+  <script>
+        $('#input').datetimepicker({ footer: true, modal: true });
+    </script>
 </div>
 
 
@@ -35,7 +37,7 @@
 
 <a name="" id="" class="btn btn-secondary" href="/users" role="button">CANCLE</a>
 <button type="submit" class="btn btn-success">SAVE</button>
-<a name="btnConfirm" value="confirm"  OnClick="return confirm('Do you want to Delete?')" class="btn btn-danger" href="/users_delete/<%= user.id %>" role="button">DELETE</a>
+<a name="btnConfirm" value="confirm"  OnClick="return confirm('Do you want to Delete?')" class="btn btn-danger" href="/users_delete/<%= user.user_id %>" role="button">DELETE</a>
 </div>
 </form>
 
