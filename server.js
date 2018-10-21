@@ -74,7 +74,7 @@ app.get('/products/:pid', function (req, res) {
     db.any(sql)
         .then(function (data) {
 
-            res.render('pages/product_edit', { product: data[0], time : time });
+            res.render('pages/product_edit', { product: data[0], time: time })
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
@@ -105,7 +105,7 @@ app.get('/users/:uid', function (req, res) {
     db.any(sql)
         .then(function (data) {
 
-            res.render('pages/user_edit', { user: data[0], time : time });
+            res.render('pages/user_edit', { user: data[0], time : time })
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
@@ -139,7 +139,7 @@ app.get('/users_delete/:id', function (req, res) {
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
-            res.render('/users', { users: data });
+            res.redirect('/users');
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
@@ -202,6 +202,24 @@ app.post('/addnewuser', function (req, res) {
     .catch(function(error){
         console.log('ERROR:' +error);
     })
+});
+
+app.get('/report_product', function (req,res) {
+    var id = req.param('id');
+    var sql = 'select * from products';
+    if (id) {
+        sql += ' where id =' + id;
+
+    }
+    db.any(sql+' order by id DSC')
+        .then(function (data) {
+            console.log('DATA:' +data);
+            res.render('/report-product', { products: data });
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
 });
 
 var port = process.env.PORT || 8080;
