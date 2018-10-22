@@ -1,26 +1,26 @@
 <% include ../partials/header %>
-<form class="form-inline my-2 my-lg-0" ><right>
-                <input class="form-control" id="myInput" type="text" placeholder="Search.." >
-                
-            </right></form>
-<table class="table">
+<div class="jumbotron">
+<h1><center>Your Users</center></h1><br>
+<input class="form-control" id="myInput" type="text" placeholder="Search.." ><br>
+          
+<table class="table" >
     <thead>
-        <tr>
-            <th>ID</th>
-            <th>Email</th>
-            <th>password</th>
+        <tr class="text-info bg-dark" >
+            <th ><h5>ID</h5></th >
+            <th ><h5>Email</h5></th >
+            <th ><h5>password</h5></th >
              
-            <th><a  class="btn btn-danger" href="/newuser" role="button">ADD NEW</a></th>
-        </tr>
+            <th ><a  class="btn btn-danger" href="/newuser" role="button">ADD NEW</a></th >
+        </font></tr>
     </thead>
     <tbody>
     <%users.forEach(function(user){ %>
-<tr>
+<tr class="bg-info text-light">
             <td scope="row"><%= user.user_id %></td>
-            <td><%= user.email %></td>
-            <td><%= user.password %></td>
-            <td>
-            <a  class="btn btn-primary" href="/users/<%= user.user_id %>" role="button">EDIT</a>
+            <td ><%= user.email %></td>
+            <td ><%= user.password %></td>
+            <td >
+            <a  class="btn btn-warning" href="/users/<%= user.user_id %>" role="button">EDIT</a>
             </td>
         </tr>
     <% }); %>
@@ -38,4 +38,5 @@ $(document).ready(function(){
   });
 });
 </script>
+</div>
 <% include ../partials/footer%>

@@ -1,10 +1,10 @@
 
 <% include ../partials/header%>
-
+<div class="jumbotron">
 <table class="table">
-    <h1><center>Top 10 Expensive Products</center></h1><br>
+    <h1><center>Report: Total sale users</center></h1><br>
     <thead>
-        <tr>
+        <tr class="text-info bg-dark">
             <th>Name</th>
             <th>Email</th>
             <th>Title</th>
@@ -15,7 +15,7 @@
     </thead>
     <tbody id="myTable">
     <% users.forEach(function(users){ %>
-        <tr>
+        <tr class="bg-info text-light">
             <td scope="row"><%= users.name %></td>           
             <td><%= users.email %></td>
             <td><%= users.title %></td>
@@ -26,5 +26,6 @@
     <%}); %>
     
     </tbody>
+    </div>
 </table>
 

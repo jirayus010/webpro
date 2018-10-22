@@ -1,24 +1,24 @@
 <% include ../partials/header%>
-<form class="form-inline my-2 my-lg-0" >
-                <input class="form-control" id="myInput" type="text" placeholder="Search.." >
-                
-            </form>
+<div class="jumbotron">
+<h1><center>Your Products</center></h1><br>
+                <input class="form-control" id="myInput" type="text" placeholder="Search.." ><br>
+
 <table class="table">
     <thead>
-        <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Price</th>
-            <th><a  class="btn btn-danger" href="/newproduct" role="button">ADD NEW</a></th>
+        <tr class="text-info bg-dark">
+            <th ><h5>ID</h5></th>
+            <th ><h5>Title</h5></th>
+            <th ><h5>Price</h5></th>
+            <th ><a  class="btn btn-danger" href="/newproduct" role="button">ADD NEW</a></th >
         </tr>
     </thead>
     <tbody id="myTable">
     <% products.forEach(function(products){ %>
-        <tr>
-            <td scope="row"><%= products.product_id %></td>
-            <td><%= products.title %></td>
-            <td><%= products.price %></td>
-            <td><a class="btn btn-primary" href="/products/<%= products.product_id %>" role="button">Edit</a></td>
+        <tr class="bg-info text-light">
+            <td scope="row" ><%= products.product_id %></td>
+            <td ><%= products.title %></td>
+            <td ><%= products.price %></td>
+            <td ><a class="btn btn-warning" href="/products/<%= products.product_id %>" role="button">Edit</a></td>
         </tr>
     <%}); %>
     </tbody>
@@ -35,5 +35,5 @@ $(document).ready(function(){
 });
 
 </script>
-
+</div>
 <% include ../partials/footer%>
