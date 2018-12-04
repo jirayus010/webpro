@@ -23,7 +23,7 @@ app.get('/about', function (req, res) {
     var name1 = 'Worrapong Ongsakul';
     var name2 = 'Jirayus Phithaksan';
     var name3 = 'Sittisak Phetkaew';
-    res.render('pages/about', { fullname: name1, fullname: name2, fullname: name3 });
+    res.render('code/test.php', { fullname: name1, fullname: name2, fullname: name3 });
 });
 //Display all products
 
