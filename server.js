@@ -20,10 +20,10 @@ app.get('/education', function (req, res) {
 });
 
 app.get('/about', function (req, res) {
-    var name1 = 'Worrapong Ongsakul';
-    var name2 = 'Jirayus Phithaksan';
-    var name3 = 'Sittisak Phetkaew';
-    res.render('pages/about', { fullname: name1, fullname: name2, fullname: name3 });
+    var name1 = 'Jirayus Phithaksan';
+    var hobbies = ['Game', 'Movie',]
+    var bd = '04/04/1998'
+    res.render('pages/about', { fullname: name1, hobbies: hobbies, bd: bd });
 });
 //Display all products
 
