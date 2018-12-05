@@ -13,6 +13,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
+    res.render('pages/login');
+});
+app.get('/main', function (req, res) {
     res.render('pages/index');
 });
 app.get('/education', function (req, res) {
@@ -20,9 +23,9 @@ app.get('/education', function (req, res) {
 });
 
 app.get('/about', function (req, res) {
-    var name1 = 'Worrapong Ongsakul';
-    var name2 = 'Jirayus Phithaksan';
-    var name3 = 'Sittisak Phetkaew';
+    var name1 = 'Worrapong Ongsakul  5930211002';
+    var name2 = 'Jirayus Phithaksan 5930211010';
+    var name3 = 'Sittisak Phetkaew 5930211038';
     res.render('pages/about', { fullname: name1, fullname2: name2, fullname3: name3 });
 });
 //Display all products

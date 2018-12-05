@@ -1,0 +1,21 @@
+<html>
+<div class="jumbotron">
+<table class="table">
+    <thead>
+        <tr class="text-info bg-dark">
+            <td><h1 class="display-3"><center>Product Manager</center></h1><br>
+            <p class="lead"><center><h5>Add new, Edit, Delete data in company</h5></center></p></td>
+            </tr>
+            </table>
+            <hr class="my-2">
+            <p><center>----------Jirayus Coporation----------</center></p><br>
+            <p class="lead"><center>
+                <a class="btn btn-primary btn-lg" href="/products" role="button">View Product</a> &emsp;&emsp;&emsp;&emsp;
+            
+                <a class="btn btn-primary btn-lg" href="/users" role="button">View Users</a>
+           <center> </p>
+            
+        </div>
+      <center><img src="https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/COC_logo_white.png" width="100" hight="200">&nbsp;
+        <img src="https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/Logo-PSU-TH-01.png" width="130" hight="230"></center>
+</html>
